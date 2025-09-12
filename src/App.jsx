@@ -1,31 +1,31 @@
 import './App.css'
 
-function WebTitle() {
+function WebTitle(props) {
   return (
-    <h1> Netflix</h1>
+    <header>
+      <h1>{props.title}</h1>
+      <p>{props.description}</p>
+    </header>
   )
 }
 
-function Articles() {
+function Article(props) {
+  const title = props.title;
+  const desc = props.description;
   return (
-    <div>
       <article>
-        <h3>Judul Article Pertama</h3>
-        <p1>Desc article pertama</p1>
-      </article>
-      <article>
-        <h3>Judul Article Kedua</h3>
-        <p1>Desc article Kedua</p1>
-      </article>
-    </div>
+      <h3>{title}</h3>
+      <p>{desc}</p>
+    </article>
   )
 }
 
 function App() {
   return (
     <main>
-      <WebTitle />
-      <Articles />
+      <WebTitle title="Netflix Clone" description="ini description web" />
+      <Article title="Judul Article Kesatu" description="Ini Description Kesatu" />
+      <Article title="Judul Article Kedua" description="Ini Description Kedua" />
     </main>
   )
 }
