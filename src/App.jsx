@@ -1,10 +1,20 @@
+import { useState } from 'react';
 import './App.css'
 
 function WebTitle(props) {
+  const [title, setTitle] = useState(props.title);
+  const desc = props.description;
+
+  function changeState() {
+    setTitle("Heri Rahmat")
+  }
+
+
   return (
     <header>
-      <h1>{props.title}</h1>
-      <p>{props.description}</p>
+      <h1>{title}</h1>
+      <p>{desc}</p>
+      <button onClick={changeState}>Ganti Judul Web</button>
     </header>
   )
 }
