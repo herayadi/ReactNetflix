@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 
 function WebTitle(props) {
@@ -30,12 +30,34 @@ function Article(props) {
   )
 }
 
+
+
 function App() {
+  const [article, setArticle] = useState("");
+  const [counterClick, setCounterClick] = useState(1);
+
+  const url = "https://dummyjson.com/posts/"+counterClick;
+
+  useEffect(() => {
+    fetch(url).then(data => data.json()).then(result => setArticle(result))
+  }, [counterClick]);
+
+  function nextArticle() {
+  setCounterClick(counterClick+1)
+}
+
+function prevArticle() {
+  setCounterClick(counterClick-1)
+}
+
   return (
     <main>
       <WebTitle title="Netflix Clone" description="ini description web" />
-      <Article title="Judul Article Kesatu" description="Ini Description Kesatu" />
-      <Article title="Judul Article Kedua" description="Ini Description Kedua" />
+      <Article title={article.title} description={article.body} />
+
+      <button onClick={prevArticle}>Prev Article</button>
+      {counterClick}
+      <button onClick={nextArticle}>Next Article</button>
     </main>
   )
 }
