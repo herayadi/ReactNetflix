@@ -30,6 +30,14 @@ function Article(props) {
   )
 }
 
+function LimitArticle() {
+  return (
+    <div>
+      <h3>Mencapai Limit!</h3>
+      <p>Anda sudah memasuki batas akhir untuk melihat article</p>
+    </div>
+  )
+}
 
 
 function App() {
@@ -54,6 +62,8 @@ function prevArticle() {
     <main>
       <WebTitle title="Netflix Clone" description="ini description web" />
       <Article title={article.title} description={article.body} />
+
+      {counterClick > 5 ? <LimitArticle /> : "Belum mencapai"}
 
       <button onClick={prevArticle}>Prev Article</button>
       {counterClick}
